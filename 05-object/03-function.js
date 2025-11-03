@@ -30,3 +30,18 @@ printKeys(s1);
 printKeys(s2);
 printKeys(person);
 
+let user = {
+    username: "john",
+    isAdmin: true,
+    email: "john@example.com",
+}
+
+function isAdmin(user) {
+    if (user.isAdmin) {
+        console.log("welcome admin, " + user.username + "!");
+    } else {
+        console.log("welcome user, " + user.username + "!");
+    }
+}
+isAdmin(user);
+

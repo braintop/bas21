@@ -13,6 +13,13 @@ let person = {
     age: 30,
     city: "New York"
 };
+for (let key in person) {
+    if(typeof person[key] === "string") {
+        console.log(key);
+    }
+    console.log(person[key]);
+}
+
 console.log(person);
 console.log(person.name);
 console.log(person.age);

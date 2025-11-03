@@ -16,3 +16,18 @@ for (let key in person) {
     console.log(key);
     console.log(person[key]);
 }
+
+let car = {
+    brand: "Toyota",
+    model: "Corolla",
+    year: 2020
+};
+for (let key in car) {
+    console.log(key);
+    console.log(car[key]);
+}
+for(let key in car) {
+    if(typeof car[key] === "string") {
+        console.log(car[key]);
+    }
+}

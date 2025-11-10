@@ -1,4 +1,7 @@
 let arr = ["oren", 20, "pizza", 40, 50];
+for (let x in arr) {
+    console.log(x);
+}
 console.log(arr);
 console.log(arr[0]);
 console.log(arr[1]);
@@ -14,10 +17,9 @@ let person = {
     city: "New York"
 };
 for (let key in person) {
-    if(typeof person[key] === "string") {
+    if (typeof person[key] === "string") {
         console.log(key);
     }
-    console.log(person[key]);
 }
 
 console.log(person);

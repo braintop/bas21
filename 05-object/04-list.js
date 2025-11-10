@@ -1,4 +1,4 @@
-let =  persons=[
+let  persons=[
     {
         name: "John",
         age: 30,

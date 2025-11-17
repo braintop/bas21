@@ -74,3 +74,47 @@ function elchanan(person){
 }
 payIsracard(person,100,yooda)
 payIsracard(person,100,elchanan)
+
+
+
+
+function print(callback){
+    callback()
+}
+
+function f1(){
+    console.log("f1 start")
+}
+function f2(){
+    console.log("f2 start")
+}
+function f3(){
+    console.log("f3 start")
+}
+
+print(f1)// f1 start  
+print(f2)// f2 start
+print(f3)// f3 start
+
+
+
+print(f1)// f1 start print end
+print(f2)// f2 start print end
+print(f3)// f3 start print end
+
+
+function plus1(a, b) {
+    return a + b;
+}
+function mult1(a, b) {
+    return a * b;
+}
+
+
+function printResult(callback){
+    let result = callback(42, 25)
+    console.log("result is " + result)
+}
+
+printResult(plus1)// result is 67
+printResult(mult1)// result is 1050

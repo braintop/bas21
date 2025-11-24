@@ -17,3 +17,4 @@ let f = message =>{
 setTimeout(()=>{
     console.log("Hello motti:)")
 },1000)
+

@@ -1,18 +1,26 @@
-function f(){
-    return new Promise((resolve, reject) => {
-
-        let number = Math.floor(Math.random() * 5)
-        if(number %2 == 0){
-            resolve("number is even")
-        }
-        else {
-            reject("number is odd")
-        }
-    })
+function generate7BoomAfterDelayAsync(min, max){
+    let p = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            let number = Math.floor(Math.random() * (max - min + 1)) + min;
+            if(number % 7 == 0|| number % 10 == 7){
+                resolve("7Boom:" + number);
+            }
+            else {
+                reject("Not 7:" + number);
+            }
+        }, 1000);
+    });
+    return p;
 }
-let result = f();
-result.then((success)=>{
-    console.log(success);
-}).catch((error)=>{
-    console.log(error)
-});
+
+function handleGenerateClick(){
+    const min = +document.getElementById("min").value;
+    const max = +document.getElementById("max").value;
+
+    let result = generate7BoomAfterDelayAsync(min, max);
+    result.then((success)=>{
+        document.getElementById("result").innerHTML = success;
+    }).catch((error)=>{
+        document.getElementById("result").innerHTML = error;
+    });
+}

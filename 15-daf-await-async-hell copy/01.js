@@ -14,11 +14,16 @@ function generate7BoomAfterDelayAsync(min, max){
 }
 async function f(){
     try{
-        let result =await generate7BoomAfterDelayAsync(700, 900);
+        let result = await generate7BoomAfterDelayAsync(700, 900);
         console.log(result);
+        let result2 =await generate7BoomAfterDelayAsync(900, 1100);
+        console.log(result2);
+        let result3 =await generate7BoomAfterDelayAsync(1100, 1300);
+        console.log(result3);
     }
     catch(error){
         console.log(error);
+
     }
 }
 

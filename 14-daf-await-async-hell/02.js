@@ -11,8 +11,8 @@ function generate7BoomAfterDelayAsync(min, max){
         }, 1000);
     });
     return p;
-}
-
+} 
+//
 function handleGenerateClick(){
     const min = +document.getElementById("min").value;
     const max = +document.getElementById("max").value;

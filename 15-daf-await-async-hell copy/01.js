@@ -1,5 +1,5 @@
 function generate7BoomAfterDelayAsync(min, max){
-    let p = new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         setTimeout(() => {
             let number = Math.floor(Math.random() * (max - min + 1)) + min;
             if(number % 7 == 0|| number % 10 == 7){
@@ -8,9 +8,8 @@ function generate7BoomAfterDelayAsync(min, max){
             else {
                 reject("Not 7:" + number);
             }
-        }, 1000);
+        }, 10000);
     });
-    return p;
 }
 async function f(){
     try{
@@ -23,7 +22,6 @@ async function f(){
     }
     catch(error){
         console.log(error);
-
     }
 }
 

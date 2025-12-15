@@ -13,14 +13,15 @@ function generate7BoomAfterDelayAsync(min, max){
     return p;
 }
 
-function handleGenerateClick(){
+async function handleGenerateClick(){
     const min = +document.getElementById("min").value;
     const max = +document.getElementById("max").value;
+    try{
+        let result =  await generate7BoomAfterDelayAsync(min, max);
+        document.getElementById("result").innerHTML = result;
 
-    let result = generate7BoomAfterDelayAsync(min, max);
-    result.then((success)=>{
-        document.getElementById("result").innerHTML = success;
-    }).catch((error)=>{
+    }
+   catch(error){
         document.getElementById("result").innerHTML = error;
-    });
+    }
 }

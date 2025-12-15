@@ -13,6 +13,18 @@ function f(){
 let result = f();
 result.then((success)=>{
     console.log(success);
+    
+}).catch((error)=>{
+    console.log(error)
+});
+
+
+console.log("end of the code");
+
+
+
+f().then((success)=>{
+    console.log(success);
 }).catch((error)=>{
     console.log(error)
 });

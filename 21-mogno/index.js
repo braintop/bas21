@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 const Product = require('./Product');
+
 const mongoose = require('mongoose');
 const uri = "mongodb+srv://david:Aa123456@cluster0.gqvy99x.mongodb.net/?appName=Cluster0";
 
@@ -20,10 +21,29 @@ async function run() {
 }
 run().catch(console.dir);
 
-
 app.post('/products', async (req, res) => {
     let product = new Product(req.body);
     await product.save();
+    res.json(product);
+});
+
+app.get('/products', async (req, res) => {
+    let products = await Product.find();
+    res.json(products);
+});
+
+app.get('/products/:id', async (req, res) => {
+    let product = await Product.findById(req.params.id);
+    res.json(product);
+});
+
+app.delete('/products/:id', async (req, res) => {
+    let product = await Product.findByIdAndDelete(req.params.id);
+    res.json(product);
+});
+
+app.put('/products/:id', async (req, res) => {
+    let product = await Product.findByIdAndUpdate(req.params.id, req.body);
     res.json(product);
 });
 

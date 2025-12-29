@@ -2,8 +2,9 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 const Product = require('./Product');
-const User = require('./User');
 const mongoose = require('mongoose');
+const userRoute = require('./routing/UserRoute');
+app.use('/users', userRoute);  
 const uri = "mongodb+srv://david:Aa123456@cluster0.gqvy99x.mongodb.net/?appName=Cluster0";
 
 const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
@@ -67,49 +68,8 @@ app.put('/products/:id', async (req, res) => {
 });
 
 //================================post get get by id  delete put================================
-app.post('/users', async (req, res) => {
-  try {
-    let user = new User(req.body);
-    await user.save();
-    res.json(user);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-app.get('/users', async (req, res) => {
-  try {
-    let users = await User.find();
-    res.json(users);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
 
-app.get('/users/:id', async (req, res) => {
-  try {
-    let user = await User.findById(req.params.id);
-    res.json(user);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
 
-app.delete('/users/:id', async (req, res) => {
-  try {
-    let user = await User.findByIdAndDelete(req.params.id);
-    res.json(user);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-app.put('/users/:id', async (req, res) => {
-  try {
-    let user = await User.findByIdAndUpdate(req.params.id, req.body);
-    res.json(user);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
 });

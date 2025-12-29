@@ -4,7 +4,7 @@ let UserSchema = new Schema({
     firtsName: String,
     lastName: String,
     email: String,
-    isActivr: Boolean,
+    isActive: Boolean,
     age: Number
 });
 module.exports = mongoose.model('user', UserSchema,"users");

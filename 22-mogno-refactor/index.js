@@ -3,8 +3,9 @@ const app = express();
 app.use(express.json());
 const mongoose = require('mongoose');
 const userRoute = require('./routing/UserRoutes');
-const productRoute = require('./routing/ProductRoutes');
 app.use('/users', userRoute);  // כאשר יגיע לשם users יפעיל את הפונקציות שבקובץ UserRoutes.js
+
+const productRoute = require('./routing/ProductRoutes');
 app.use('/products', productRoute);  // כאשר יגיע לשם products יפעיל את הפונקציות שבקובץ ProductRoutes.js
 
 

@@ -1,8 +1,14 @@
 const User = require('../models/User');
+var bcrypt = require('bcryptjs');
 exports.add = async (req, res) => {
     try {
       let user = new User(req.body);
       console.log(user);
+      if(req.body.password){
+      let salt = bcrypt.genSaltSync(12);
+      user.password = bcrypt.hashSync(req.body.password, salt);
+    }
+      
       await user.save();
       res.json({"message": "User added successfully"});
     } catch (error) {

@@ -51,3 +51,21 @@ exports.add = async (req, res) => {
       res.status(500).json({ message: error.message });
     }
   };
+
+  exports.login = async (req, res) => {
+    try{
+      let user=await User.findOne({email:req.body.email})
+      let anser=bcrypt.compareSync(req.body.password, user.password);
+      if(anser){
+        res.json({message:'Login success'})
+      }
+      else {
+        res.json({message:'Login not  success'})
+      }
+    }
+    catch(error){
+      res.json({message:error.message})
+    }
+  }
+
+

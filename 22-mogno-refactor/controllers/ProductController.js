@@ -10,6 +10,9 @@ exports.add = async (req, res) => {
   };
   exports.getAll = async (req, res) => {
     try {
+      if(!req.user) {
+        return res.status(401).json({ message: "Unauthorized" });
+      }
       let products = await Product.find();
       res.json(products);
     } catch (error) {

@@ -85,4 +85,25 @@ exports.login = async (req, res) => {
   }
 }
 
+exports.auth = async (req, res, next) => {  
+  try {
+    const token = req.headers.authorization.split(' ')[1];
+    const decoded = jwt.verify(token, "secret password");
+    console.log(decoded);
+    req.user = decoded;
+    next();
+  } catch (error) {
+    res.status(401).json({ message: "Unauthorized" });
+  }
+}
 
+exports.getAllproducts = async (req, res) => {
+  try {
+    if(!req.user) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
+    res.json({title: "product 1", price: 100});
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}

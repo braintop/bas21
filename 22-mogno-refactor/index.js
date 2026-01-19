@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 app.use(express.json());
+const cors = require('cors');
+app.use(cors())
 const mongoose = require('mongoose');
 const userRoute = require('./routing/UserRoutes');
 app.use('/users', userRoute);  // כאשר יגיע לשם users יפעיל את הפונקציות שבקובץ UserRoutes.js
@@ -26,7 +28,7 @@ async function run() {
 }
 run().catch(console.dir);
 
-app.listen(3001, () => {
+app.listen(3000, () => {
     console.log('Server is running on port 3000');
 });
 

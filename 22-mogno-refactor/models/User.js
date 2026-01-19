@@ -5,7 +5,7 @@ let UserSchema = new Schema({
     lastName: String,
     email: {
         type: String,
-        unique: [true, 'please provide email'],
+        unique: [true, 'please provide unique email'],
         required: true,
         lowercase: true
     },
